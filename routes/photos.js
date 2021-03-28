@@ -7,7 +7,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/:id', (req, res, next) => {
-  // res.send(req.params.id);
+  // photo.pugをレスポンスとして設定
   res.render('photo', { id: req.params.id });
 });
 
