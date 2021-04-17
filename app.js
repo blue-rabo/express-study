@@ -12,8 +12,8 @@ var passport = require('passport');
 var GitHubStrategy = require('passport-github2').Strategy;
 
 // Client ID と Client Secret を設定
-var GITHUB_CLIENT_ID = 'ClientID';
-var GITHUB_CLIENT_SECRET = 'ClientSecret';
+var GITHUB_CLIENT_ID = 'ClientID(仮)';
+var GITHUB_CLIENT_SECRET = 'ClientSecret(仮)';
 
 // 認証されたユーザー情報をシリアライズして保存
 passport.serializeUser(function (user, done) {
@@ -90,7 +90,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // express-session と passport でセッションを利用する設定
-app.use(session({ secret: '秘密鍵', resave: false, saveUninitialized: false }));
+app.use(session({ secret: '秘密鍵(仮)', resave: false, saveUninitialized: false }));
 app.use(passport.initialize());
 app.use(passport.session());
 
