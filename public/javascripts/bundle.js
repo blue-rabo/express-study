@@ -100,9 +100,10 @@ var block = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#block'); // id="scal
 
 var scalingButton = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#scaling-button'); // id="moving-button"が設定されたbutton要素を取得
 
-var movingButton = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#moving-button'); // loadavg という id が設定された段落要素を表す jQuery オブジェクトを取得
+var movingButton = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#moving-button'); // loadavg というidが設定された段落要素を表すjQueryオブジェクトを取得
 
 var loadavg = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#loadavg');
+var loadavg_button = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#loadavg_button');
 scalingButton.on('click', function () {
   // 2秒かけて四角の高さと幅を200ptにし、その後2秒かけて100ptに戻すというアニメーションを実装
   block.animate({
@@ -122,13 +123,16 @@ movingButton.on('click', function () {
   block.animate({
     'marginLeft': '20px'
   }, 1000);
-});
-setInterval(function () {
-  // 第二引数に与えられた整数のミリ秒間隔で、第一引数で渡された関数を実行
+}); // 第二引数に与えられた整数のミリ秒間隔で、第一引数で渡された関数を実行
+// setInterval(() => {
+
+loadavg_button.on('click', function () {
+  // '/server-status'というパスになにもデータを渡さずアクセス
   jquery__WEBPACK_IMPORTED_MODULE_0___default.a.get('/server-status', {}, function (data) {
+    // dataのプロパティのloadavgの配列取得して文字列に変換し段落の内部のテキストとして設定
     loadavg.text(data.loadavg.toString());
   });
-}, 10);
+});
 
 /***/ }),
 /* 1 */

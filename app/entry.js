@@ -10,6 +10,7 @@ const scalingButton = $('#scaling-button');
 const movingButton = $('#moving-button');
 // loadavg というidが設定された段落要素を表すjQueryオブジェクトを取得
 const loadavg = $('#loadavg');
+const loadavg_button = $('#loadavg_button');
 
 scalingButton.on('click', () => {
   // 2秒かけて四角の高さと幅を200ptにし、その後2秒かけて100ptに戻すというアニメーションを実装
@@ -24,10 +25,11 @@ movingButton.on('click', () => {
 });
 
 // 第二引数に与えられた整数のミリ秒間隔で、第一引数で渡された関数を実行
-setInterval(() => {
+// setInterval(() => {
+loadavg_button.on('click', () => {
   // '/server-status'というパスになにもデータを渡さずアクセス
   $.get('/server-status', {}, (data) => {
     // dataのプロパティのloadavgの配列取得して文字列に変換し段落の内部のテキストとして設定
     loadavg.text(data.loadavg.toString());
   });
-}, 1000);
+});
