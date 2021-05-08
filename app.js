@@ -51,6 +51,7 @@ function ensureAuthenticated(req, res, next) {
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var photosRouter = require('./routes/photos');
+var serverStatus = require('./routes/server-status');
 
 // デバッグ用のログを出力するプログラム
 // debug モジュール
@@ -99,6 +100,7 @@ app.use('/', indexRouter);
 app.use('/users', ensureAuthenticated ,usersRouter);
 app.use('/photos', photosRouter);
 app.use('/photos/:title', photosRouter);
+app.use('/server-status', serverStatus);
 
 // GitHubログインをするためのURL
 app.get('/auth/github',

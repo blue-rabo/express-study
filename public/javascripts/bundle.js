@@ -100,7 +100,9 @@ var block = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#block'); // id="scal
 
 var scalingButton = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#scaling-button'); // id="moving-button"が設定されたbutton要素を取得
 
-var movingButton = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#moving-button');
+var movingButton = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#moving-button'); // loadavg という id が設定された段落要素を表す jQuery オブジェクトを取得
+
+var loadavg = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#loadavg');
 scalingButton.on('click', function () {
   // 2秒かけて四角の高さと幅を200ptにし、その後2秒かけて100ptに戻すというアニメーションを実装
   block.animate({
@@ -113,7 +115,7 @@ scalingButton.on('click', function () {
   }, 2000);
 });
 movingButton.on('click', function () {
-  // 四角形が 0.5 秒間 かけて右に移動し、 その後 1 秒かけて戻ってくるアニメーションを実装
+  // 四角形が0.5秒間 かけて右に移動し、 その後1秒かけて戻ってくるアニメーションを実装
   block.animate({
     'marginLeft': '500px'
   }, 500);
@@ -121,6 +123,12 @@ movingButton.on('click', function () {
     'marginLeft': '20px'
   }, 1000);
 });
+setInterval(function () {
+  // 第二引数に与えられた整数のミリ秒間隔で、第一引数で渡された関数を実行
+  jquery__WEBPACK_IMPORTED_MODULE_0___default.a.get('/server-status', {}, function (data) {
+    loadavg.text(data.loadavg.toString());
+  });
+}, 10);
 
 /***/ }),
 /* 1 */
